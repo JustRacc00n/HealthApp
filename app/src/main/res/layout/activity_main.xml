@@ -7,16 +7,15 @@
     <ImageView
         android:id="@+id/motivationalImage"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/motivational_image"
         android:scaleType="centerCrop"
         android:src="@drawable/motivational_image"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/foodButton"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_weight="1"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1" />
 
     <Button
         android:id="@+id/foodButton"
@@ -41,9 +40,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/meds"
-        app:layout_constraintTop_toBottomOf="@id/symptomsButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/symptomsButton" />
+
+    <Button
+        android:id="@+id/statsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/stats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/medsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

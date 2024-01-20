@@ -13,17 +13,22 @@
         android:theme="@style/Theme.SzopInz"
         tools:targetApi="33">
         <activity
+            android:name=".StatsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_stats"
+            android:theme="@style/Theme.SzopInz" />
+        <activity
             android:name=".FoodActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MedsActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SymptomsActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

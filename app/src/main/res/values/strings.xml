@@ -1,11 +1,13 @@
 <resources>
     <!-- Other strings above... -->
-    <string name="app_name">SzopInz</string>
+    <string name="app_name">Health track app</string>
 
     <!-- Strings for the new features -->
     <string name="motivational_image">Obraz motywacyjny</string>
     <string name="food">Jedzenie</string>
     <string name="symptoms">Objawy</string>
     <string name="meds">Leki</string>
+    <string name="stats">Statystyki</string>
     <string name="add_button">Dodaj</string>
+    <string name="title_activity_stats">StatsActivity</string>
 </resources>

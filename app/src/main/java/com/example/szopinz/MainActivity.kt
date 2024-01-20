@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import com.example.szopinz.viewmodel.HealthRecordViewModel
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: HealthRecordViewModel
 
@@ -32,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         val medsButton: Button = findViewById(R.id.medsButton)
         medsButton.setOnClickListener {
             val intent = Intent(this, MedsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val statsButton: Button = findViewById(R.id.statsButton)
+        statsButton.setOnClickListener {
+            val intent = Intent(this, StatsActivity::class.java)
             startActivity(intent)
         }
 
