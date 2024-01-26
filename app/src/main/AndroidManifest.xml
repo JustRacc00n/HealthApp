@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.example.szopinz">
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SzopInz"
-        tools:targetApi="33">
-        <activity
-            android:name=".StatsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_stats"
-            android:theme="@style/Theme.SzopInz" />
-        <activity
-            android:name=".FoodActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".MedsActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".SymptomsActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        android:theme="@style/AppTheme">
+        <activity android:name=".ListAddActivity"
+                  android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CreateFoodActivity"
+            android:label="@string/item_add_food"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".ByDayActivity"
+            android:label="@string/item_by_day"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".ByMealActivity"
+            android:label="@string/item_by_meal"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".SingleFoodActivity"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/item_by_search"
+            android:parentActivityName=".ListAddActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ClearAllActivity"
+            android:label="@string/clear_all_button"
+            android:parentActivityName=".ListAddActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".WeeklySummaryActivity"
+            android:label="@string/item_week_summary"
+            android:parentActivityName=".ListAddActivity"/>
     </application>
 
 </manifest>
