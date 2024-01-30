@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
 public class FoodsAdapter extends ArrayAdapter<Food>{
 
     public FoodsAdapter(Context context, ArrayList<Food> foods) {
@@ -23,25 +22,19 @@ public class FoodsAdapter extends ArrayAdapter<Food>{
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.food_item, parent, false);
         }
 
-
         Food currentFood = getItem(position);
 
         TextView dateListItem = listItemView.findViewById(R.id.food_item_date);
-        dateListItem.setText(Helper.convertDateFormatOlder(currentFood.getDate()));
-
         TextView foodListItem = listItemView.findViewById(R.id.food_item_food);
-        foodListItem.setText(currentFood.getFood());
-
         TextView mealListItem = listItemView.findViewById(R.id.food_item_meal);
-        mealListItem.setText(currentFood.getMeal());
 
-        listItemView.setTag(currentFood.getId());
-
+        if (currentFood != null) {
+            dateListItem.setText(Helper.convertDateFormatOlder(currentFood.getDate()));
+            foodListItem.setText(currentFood.getFood());
+            mealListItem.setText(currentFood.getMeal());
+            listItemView.setTag(currentFood.getId());
+        }
 
         return listItemView;
-
     }
-
-
-
 }

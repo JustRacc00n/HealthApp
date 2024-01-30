@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#9040ff</color>
-    <color name="colorPrimaryDark">#9040ff</color>
-    <color name="colorAccent">#9040ff</color>
-    <color name="alert_red">#FF0000</color>
-
+    <color name="colorPrimary">#D0D9C9</color>
+    <color name="colorPrimaryDark">#B9C7B5</color>
+    <color name="colorAccent">#0C50A3</color>
+    <color name="alert_red">#F80808</color>
+    <color name="colorButton">#D9E3EC</color>
+    <color name="red_light">#F3D3D9</color>
+    <color name="green_light">#E2F0C2</color>
+    <color name="blue_light">#ADD8E6</color>
 </resources>

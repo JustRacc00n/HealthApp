@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListAddActivity"
+        <activity android:name=".MainMenuActivity"
                   android:exported="true">
 
             <intent-filter>
@@ -21,36 +21,41 @@
         <activity
             android:name=".CreateFoodActivity"
             android:label="@string/item_add_food"
-            android:parentActivityName=".ListAddActivity" />
+            android:parentActivityName=".MainMenuActivity" />
         <activity
-            android:name=".ByDayActivity"
-            android:label="@string/item_by_day"
-            android:parentActivityName=".ListAddActivity" />
+            android:name=".ShowDataActivity"
+            android:label="@string/item_data"
+            android:parentActivityName=".MainMenuActivity" />
         <activity
-            android:name=".ByMealActivity"
-            android:label="@string/item_by_meal"
-            android:parentActivityName=".ListAddActivity" />
-        <activity
-            android:name=".SingleFoodActivity"
-            android:parentActivityName=".ListAddActivity" />
+            android:name=".SingleItemActivity"
+            android:parentActivityName=".MainMenuActivity" />
         <activity
             android:name=".SearchActivity"
             android:label="@string/item_by_search"
-            android:parentActivityName=".ListAddActivity"
+            android:parentActivityName=".MainMenuActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ClearAllActivity"
             android:label="@string/clear_all_button"
-            android:parentActivityName=".ListAddActivity" />
+            android:parentActivityName=".MainMenuActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".WeeklySummaryActivity"
-            android:label="@string/item_week_summary"
-            android:parentActivityName=".ListAddActivity"/>
+            android:name=".AddSymptomActivity"
+            android:label="@string/item_add_symptom"
+            android:parentActivityName=".MainMenuActivity" />
+        <activity
+            android:name=".AddMedicationActivity"
+            android:label="@string/item_add_medication"
+            android:parentActivityName=".MainMenuActivity" />
+        <activity
+            android:name=".FrequentResultsActivity"
+            android:label="@string/see_most_frequent"
+            android:parentActivityName=".MainMenuActivity" />
+
     </application>
 
 </manifest>

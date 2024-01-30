@@ -7,7 +7,7 @@
     android:onClick="getItem">
 
     <TextView
-        android:id="@+id/food_item_date"
+        android:id="@+id/symptom_date"
         android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/food_item_food"
+        android:id="@+id/symptom_name"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -33,19 +33,19 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/food_item_meal"
+        android:id="@+id/symptom_intensity"
         android:layout_width="138dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="168dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/detail"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/food_item_date"
+        app:layout_constraintTop_toBottomOf="@+id/symptom_date"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

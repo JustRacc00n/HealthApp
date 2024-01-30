@@ -1,22 +1,45 @@
 <resources>
-    <string name="app_name">Aplikacja zdrowotna</string>
+    <string name="app_name">Health App</string>
 
     <string name="food_text">Food</string>
     <string name="comment_text">Comment</string>
     <string name="save_button">Save</string>
-    <string name="item_by_day">See food by date</string>
+    <string name="item_data">See your data</string>
     <string name="item_by_meal">See food by meal</string>
     <string name="item_by_search">Search</string>
-    <string name="by_day_button">See food</string>
+    <string name="by_day_button">Show data</string>
     <string name="by_meal_title">Select meal</string>
     <string name="main_page">Main page</string>
     <string name="delete_button">Delete this record</string>
     <string name="no_food_toast">You must enter a food</string>
-    <string name="welcome_screen">Aplikacja zdrowotna</string>
-    <string name="item_add_food">Record a food</string>
-    <string name="search_hint">Search for a food</string>
+    <string name="welcome_screen">Health App</string>
+    <string name="item_add_food">Add food</string>
+    <string name="item_add_symptom">Add symptom</string>
+    <string name="item_add_medication">Add medication</string>
+    <string name="search_hint">Search for a record</string>
     <string name="clear_all_button">Clear all saved data</string>
     <string name="item_week_summary">Week summary</string>
+    <string name="dose">Dose</string>
+    <string name="date">Date</string>
+    <string name="save">Save</string>
+    <string name="medication_name">Medication Name</string>
+    <string name="button">Button</string>
+    <string name="symptom">Symptom</string>
+    <string name="intensity">Intensity</string>
+    <string name="textview">TextView</string>
+    <string name="no_foods_recorded">No foods recorded</string>
+    <string name="no_data_recorded">No data recorded</string>
+    <string name="name">name</string>
+    <string name="detail">detail</string>
+    <string name="no_medication_toast">You must enter medication name!</string>
+    <string name="no_symptom_toast">You must enter symptom name!</string>
+    <string name="item_stats_button">See data</string>
+    <string name="health_app_photo">Health app photo</string>
+    <string name="no_results_found">No results found for \"%1$s\"</string>
+    <string name="most_frequent_symptoms">Most frequent symptoms</string>
+    <string name="most_frequent_medications">Most frequent medications</string>
+    <string name="most_frequent_foods">Most frequent foods</string>
+    <string name="see_most_frequent">See most frequent</string>
 
 
 </resources>

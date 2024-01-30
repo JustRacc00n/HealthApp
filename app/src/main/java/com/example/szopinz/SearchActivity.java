@@ -40,41 +40,46 @@ public class SearchActivity extends AppCompatActivity {
         searchListView = findViewById(R.id.search_list);
         noResultsText = findViewById(R.id.no_food_search);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"foods")
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"database-name")
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
 
         String searchWord = searchText.getText().toString();
-        String searchDBWord = '%'+searchWord+'%';
+        String searchDBWord = '%' + searchWord + '%';
 
-        List<Food> foodList = db.foodDao().findBySearch(searchDBWord);
+        List<Food> foodResults = db.foodDao().findBySearch(searchDBWord);
+        List<Symptom> symptomResults = db.symptomDao().findBySearch(searchDBWord);
+        List<Medication> medicationResults = db.medicationDao().findBySearch(searchDBWord);
 
-        ArrayList<Food> foods = (ArrayList)foodList;
-
-        if(foods.size()==0){
+        if (foodResults.isEmpty() && symptomResults.isEmpty() && medicationResults.isEmpty()) {
             noResultsText.setVisibility(View.VISIBLE);
-            searchListView.setVisibility((View.INVISIBLE));
-            String outputText = "There are no foods recorded as "+ "'"+searchWord+"'";
+            searchListView.setVisibility(View.INVISIBLE);
+            String outputText = getString(R.string.no_results_found, searchWord);
             noResultsText.setText(outputText);
-
+            return;
         }
-        else {
-            noResultsText.setVisibility(View.INVISIBLE);
-            searchListView.setVisibility((View.VISIBLE));
 
+        noResultsText.setVisibility(View.INVISIBLE);
+        searchListView.setVisibility(View.VISIBLE);
 
-            FoodsAdapter foodsAdapter = new FoodsAdapter(this, foods);
-
-
+        if (!foodResults.isEmpty()) {
+            FoodsAdapter foodsAdapter = new FoodsAdapter(this, new ArrayList<>(foodResults));
             searchListView.setAdapter(foodsAdapter);
-
-            InputMethodManager inputManager = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
-
-            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
         }
+        else if (!symptomResults.isEmpty()) {
+            SymptomsAdapter symptomsAdapter = new SymptomsAdapter(this, new ArrayList<>(symptomResults));
+            searchListView.setAdapter(symptomsAdapter);
+        }
+        else if (!medicationResults.isEmpty()) {
+            MedicationsAdapter medicationsAdapter = new MedicationsAdapter(this, new ArrayList<>(medicationResults));
+            searchListView.setAdapter(medicationsAdapter);
+        }
+
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
 
     }
 
@@ -90,42 +95,23 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         if(item.getItemId() == R.id.item_main_page){
-            Intent intent = new Intent(this, ListAddActivity.class);
+            Intent intent = new Intent (this, ShowDataActivity.class);
             startActivity(intent);
         }
-
-        if(item.getItemId() == R.id.item_by_day){
-            Intent intent = new Intent (this, ByDayActivity.class);
-            startActivity(intent);
-        }
-
-        if(item.getItemId() == R.id.item_by_meal){
-            Intent intent = new Intent(this, SearchActivity.class);
-            startActivity(intent);
-        }
-
-        if(item.getItemId() == R.id.item_delete_all){
+        else if(item.getItemId() == R.id.item_delete_all){
             Intent intent = new Intent(this, ClearAllActivity.class);
-            startActivity(intent);
-        }
-
-        if(item.getItemId() == R.id.item_add_food){
-            Intent intent = new Intent(this, CreateFoodActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId() == R.id.item_week_summary){
-            Intent intent = new Intent(this, WeeklySummaryActivity.class);
             startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void getFood(View listItem){
-        int foodID = (int) listItem.getTag();
+    public void getItem(View listItem){
+        int itemID = (int) listItem.getTag();
 
-        Intent intent = new Intent(this, SingleFoodActivity.class);
-        intent.putExtra("foodID", foodID);
+        Intent intent = new Intent(this, SingleItemActivity.class);
+        intent.putExtra("itemID", itemID);
+        intent.putExtra("itemType", "Food");
         startActivity(intent);
     }
 }

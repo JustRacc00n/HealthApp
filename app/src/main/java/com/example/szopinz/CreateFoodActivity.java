@@ -1,24 +1,13 @@
 package com.example.szopinz;
 
-import androidx.room.*;
-import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -47,7 +36,7 @@ public class CreateFoodActivity extends AppCompatActivity {
 
         Calendar newCalendar = Calendar.getInstance();
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "foods")
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-name")
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
@@ -64,37 +53,31 @@ public class CreateFoodActivity extends AppCompatActivity {
         mealAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mealSpinner.setAdapter(mealAdapter);
 
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String display_date = "Date: "+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                dateButton.setText(display_date);
-                dateForDB = Integer.toString(year)+"-"+Helper.addLeadingZero(Integer.toString(monthOfYear+1))+"-"+Helper.addLeadingZero(Integer.toString(dayOfMonth));
-
-            }
+        datePickerDialog = new DatePickerDialog(this, (view, year, monthOfYear, dayOfMonth) -> {
+            String display_date = "Date: "+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+            dateButton.setText(display_date);
+            dateForDB = year +"-"+Helper.addLeadingZero(Integer.toString(monthOfYear+1))+"-"+Helper.addLeadingZero(Integer.toString(dayOfMonth));
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        saveButton.setOnClickListener(view -> {
 
-                foodText = findViewById(R.id.food_text);
+            foodText = findViewById(R.id.food_text);
 
-                if(foodText.getText().toString().isEmpty()){
-                    Toast toast = Toast.makeText(CreateFoodActivity.this, R.string.no_food_toast, Toast.LENGTH_SHORT);
-                    toast.show();
-                    foodText.requestFocus();
-                }
-                
-                else{
-                Food food = new Food(dateForDB,
-                        mealSpinner.getSelectedItem().toString(),
-                        foodText.getText().toString(),
-                        commentText.getText().toString());
-                db.foodDao().insertAll(food);
-
-                startActivity(new Intent(CreateFoodActivity.this, ListAddActivity.class));}
+            if(foodText.getText().toString().isEmpty()){
+                Toast toast = Toast.makeText(CreateFoodActivity.this, R.string.no_food_toast, Toast.LENGTH_SHORT);
+                toast.show();
+                foodText.requestFocus();
             }
+
+            else{
+            Food food = new Food(dateForDB,
+                    mealSpinner.getSelectedItem().toString(),
+                    foodText.getText().toString(),
+                    commentText.getText().toString());
+            db.foodDao().insertAll(food);
+
+            startActivity(new Intent(CreateFoodActivity.this, MainMenuActivity.class));}
         });
 
 

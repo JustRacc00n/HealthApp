@@ -1,12 +1,9 @@
 package com.example.szopinz;
-        
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 
 
@@ -17,18 +14,11 @@ public class Helper {
         return number;
     }
 
-
-//    public static String convertDateFormat(String yyyyMMDD){
-//        DateTimeFormatter yMDFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
-//        DateTimeFormatter dMYFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY", Locale.ENGLISH);
-//        LocalDate date = LocalDate.parse(yyyyMMDD, yMDFormat);
-//        return  date.format(dMYFormat);
-//    }
-
     public static String convertDateFormatOlder(String yyyyMMDD){
         SimpleDateFormat yMDFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {Date date = yMDFormat.parse(yyyyMMDD);
         SimpleDateFormat dMYFormat = new SimpleDateFormat("dd/MM/yyyy");
+            assert date != null;
             return dMYFormat.format(date);        }
         catch (ParseException e){e.printStackTrace();}
         return null;
@@ -46,16 +36,7 @@ public class Helper {
 
     public static Date getCurrentDate() {
         Calendar today = Calendar.getInstance();
-        Date todayDate = today.getTime();
-        return todayDate;
-    }
-
-    public static Date getDateWeekAgo(){
-        Calendar today = Calendar.getInstance();
-        today.add(Calendar.DATE, -6);
-        Date weekAgoDate = today.getTime();
-        return weekAgoDate;
-
+        return today.getTime();
     }
 
 }

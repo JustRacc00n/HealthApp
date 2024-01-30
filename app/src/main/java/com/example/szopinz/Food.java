@@ -1,8 +1,8 @@
 package com.example.szopinz;
 
-import androidx.room.*;
-
-import java.util.Date;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 
 @Entity(tableName = "foods")
@@ -13,11 +13,11 @@ public class Food {
     @ColumnInfo(name = "date")
     private String date;
     @ColumnInfo(name = "meal")
-    private String meal;
+    private final String meal;
     @ColumnInfo(name = "food")
     private String food;
     @ColumnInfo(name = "comment")
-    private String comment;
+    private final String comment;
 
 
 
@@ -48,10 +48,6 @@ public class Food {
         return meal;
     }
 
-    public void setMeal(String meal) {
-        this.meal = meal;
-    }
-
     public String getFood() {
         return food;
     }
@@ -62,9 +58,5 @@ public class Food {
 
     public String getComment() {
         return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 }

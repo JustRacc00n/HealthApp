@@ -1,5 +1,7 @@
 package com.example.szopinz;
-        
+
+
+import org.jetbrains.annotations.NotNull;
 
 public enum Meals {
     BREAKFAST("Breakfast"),
@@ -8,10 +10,10 @@ public enum Meals {
     SNACK("Snack"),
     OTHER("Other");
 
-    private String mealName;
+    private final String mealName;
 
     Meals(String meal){this.mealName = meal;}
 
     @Override
-    public String toString(){return this.mealName;}
+    public @NotNull String toString(){return this.mealName;}
 }
